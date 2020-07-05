@@ -21,6 +21,7 @@ class HospitalEmployee {
     }
   }
   
+
   class Nurse extends HospitalEmployee {
     constructor(name, certifications) {
       super(name);
@@ -36,12 +37,14 @@ class HospitalEmployee {
     }
   }
   
+
   class Doctor extends HospitalEmployee {
     constructor(name, insurance) {
       super(name);
       this._insurance = insurance;
     }
   }
+  
   
   const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
   nurseOlynyk.takeVacationDays(5);
