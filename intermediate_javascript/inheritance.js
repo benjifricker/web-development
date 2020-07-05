@@ -36,6 +36,13 @@ class HospitalEmployee {
     }
   }
   
+  class Doctor extends HospitalEmployee {
+    constructor(name, insurance) {
+      super(name);
+      this._insurance = insurance;
+    }
+  }
+  
   const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
   nurseOlynyk.takeVacationDays(5);
   console.log(nurseOlynyk.remainingVacationDays);
