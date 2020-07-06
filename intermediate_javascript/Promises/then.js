@@ -1,4 +1,4 @@
-const { checkInventory } = require('./inventory.js');
+const { checkInventory } = require('./library1.js');
 
 const order = [['sunglasses', 1], ['bags', 2]];
 
