@@ -9,8 +9,6 @@ let availableAirplanes = [
       'medicalAssistance', 
       'sensorOperators',
     ],
-    maxSpeed: 1200,
-    minSpeed: 300,
   },
   {
     name: 'SkyJet',
@@ -19,15 +17,12 @@ let availableAirplanes = [
       'pilots',
       'flightAttendants',
     ],
-    maxSpeed: 800,
-    minSpeed: 200,
   },
 ];
 
 
 let flightRequirements = {
   requiredStaff: 4,
-  requiredSpeedRange: 700,
 };
 
 
