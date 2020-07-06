@@ -1,4 +1,4 @@
-const Airplane = require('./1-airplane.js');
+const Airplane = require('./moduleExports');
 
 function displayAirplane() {
   console.log(Airplane.myAirplane);
