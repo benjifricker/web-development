@@ -14,6 +14,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { src: VIDEOS.fast };
+    this.chooseVideo = this.chooseVideo.bind(this);
+  }
+
+  chooseVideo(newVideo) {
+    this.setState({
+      src: VIDEOS[newVideo]
+    });
   }
 
   render() {
