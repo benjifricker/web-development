@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Enthused } from './Enthused';
+import { Enthused } from './unmountingLifecycleMethods';
 
 export class App extends React.Component {
   constructor(props) {
