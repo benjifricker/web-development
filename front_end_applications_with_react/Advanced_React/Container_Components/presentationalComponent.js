@@ -11,3 +11,7 @@ export class GuineaPigs extends React.Component {
     );
   }
 }
+
+GuineaPigs.propTypes = {
+  src: React.PropTypes.string.isRequired
+};
