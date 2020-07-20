@@ -73,6 +73,12 @@ class App extends React.Component {
     this.intervals = [];
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.latestClick < prevState.latestClick) {
+      this.endGame();
+    }
+  }
+
   render() {
     let buttonStyle = {
       display: this.state.game ? 'none' : 'inline-block'
