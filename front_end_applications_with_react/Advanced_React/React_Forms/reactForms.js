@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 export class Input extends React.Component {
+  handleUserInput(e) {
+    this.setState({
+      userInput: e.target.value
+    });
+  }
+
   render() {
     return (
       <div>
