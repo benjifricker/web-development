@@ -11,7 +11,7 @@ class Playlist extends React.Component {
         <!-- <TrackList /> -->
         <button className="Playlist-save">SAVE TO SPOTIFY</button>
       </div>
-    )
+    );
   }
 }
 
