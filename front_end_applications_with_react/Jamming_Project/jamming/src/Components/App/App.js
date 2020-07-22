@@ -8,8 +8,11 @@ import Playlist from '../Playlist/Playlist';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchResults: []
+    }
   }
-  
+
   return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
