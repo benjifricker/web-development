@@ -43,6 +43,10 @@ class App extends React.Component {
     let trackURIs = tracks.map(track => track.uri);
   }
 
+  search(searchTerm) {
+    console.log(searchTerm);
+  }
+
   render() {
     return (
       <div>
