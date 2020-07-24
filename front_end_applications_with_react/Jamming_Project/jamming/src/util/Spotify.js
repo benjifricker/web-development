@@ -16,7 +16,12 @@ let Spotify = {
       // Clear accessToken
       window.setTimeout(() => accessToken = '', expiresIn * 1000);
       window.history.pushState('Access Token', null, '/');
+    } else {
+      let accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}
+      &response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+      window.location = accessUrl;
     }
+
     return accessToken;
   }
 };
