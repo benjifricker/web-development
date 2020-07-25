@@ -46,8 +46,10 @@ class App extends React.Component {
     let trackURIs = tracks.map(track => track.uri);
   }
 
-  search(searchTerm) {
-    console.log(searchTerm);
+  search(term) {
+    Spotify.search(term).then(searchResults => {
+      this.setState({ searchResults: searchResults })
+    });
   }
 
   render() {
