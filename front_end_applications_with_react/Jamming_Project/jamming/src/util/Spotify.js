@@ -44,6 +44,10 @@ let Spotify = {
         uri: track.uri,
       }));
     });
+  },
+
+  savePlaylist(name, trackUris) {
+    
   }
 };
 
