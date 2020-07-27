@@ -12,6 +12,11 @@ app.use(express.static('public'));
 const expressions = [];
 seedElements(expressions, 'expressions');
 
+// Expressions Router
+let expressionsRouter = express.Router();
+
+app.use('/expressions', expressionsRouter);
+
 // Get all expressions
 app.get('/expressions', (req, res, next) => {
   res.send(expressions);
