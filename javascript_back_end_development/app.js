@@ -13,14 +13,9 @@ const expressions = [];
 seedElements(expressions, 'expressions');
 
 // Expressions Router
-let expressionsRouter = express.Router();
+const expressionsRouter = require('./expressions');
 
 app.use('/expressions', expressionsRouter);
-
-// Get all expressions
-expressionsRouter.get('/', (req, res, next) => {
-  res.send(expressions);
-});
 
 // Get specific expression
 app.get('/expressions/:id', (req, res, next) => {
