@@ -16,6 +16,10 @@ seedElements(expressions, 'expressions');
 const expressionsRouter = require('./expressions');
 app.use('/expressions', expressionsRouter);
 
+// Import and mount the animalsRouter
+const animalsRouter = require('./animals');
+app.use('/animals', animalsRouter);
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
