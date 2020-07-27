@@ -12,7 +12,7 @@ app.use(express.static('public'));
 const expressions = [];
 seedElements(expressions, 'expressions');
 
-// Expressions Router
+// Import and mount the expressionsRouter
 const expressionsRouter = require('./expressions');
 app.use('/expressions', expressionsRouter);
 
