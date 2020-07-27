@@ -19,7 +19,12 @@ app.get('/expressions', (req, res, next) => {
 
 // Get specific expression
 app.get('/expressions/:id', (req, res, next) => {
-  res.send(getElementById(req.params.id, expressions));
+  const foundExpression = getElementById(req.params.id, expressions);
+  if (foundExpression) {
+    res.send(foundExpression);
+  } else {
+    res.status(404).send();
+  }
 });
 
 app.listen(PORT, () => {
