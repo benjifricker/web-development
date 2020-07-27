@@ -17,6 +17,11 @@ app.get('/expressions', (req, res, next) => {
   res.send(expressions);
 });
 
+// Get specific expression
+app.get('/expressions/:id', (req, res, next) => {
+  res.send(getElementById(req.params.id, expressions));
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
