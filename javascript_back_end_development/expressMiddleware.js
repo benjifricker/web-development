@@ -34,6 +34,17 @@ if (!process.env.IS_TEST_ENV) {
 // Parsing
 app.use(bodyParser.json());
 
+// Find card
+app.use('/cards/:cardId', (req, res, next) => {
+  const cardId = Number(req.params.cardId);
+  const cardIndex = cards.findIndex(card => card.id === cardId);
+  if (cardIndex === -1) {
+    return res.status(404).send('Card not found');
+  }
+  req.cardIndex = cardIndex;
+  next();
+});
+
 // Get all Cards
 app.get('/cards/', (req, res, next) => {
   res.send(cards);
@@ -54,21 +65,11 @@ app.post('/cards/', (req, res, next) => {
 
 // Get a single Card
 app.get('/cards/:cardId', (req, res, next) => {
-  const cardId = Number(req.params.cardId);
-  const cardIndex = cards.findIndex(card => card.id === cardId);
-  if (cardIndex === -1) {
-    return res.status(404).send('Card not found');
-  }
   res.send(cards[cardIndex]);
 });
 
 // Update a Card
 app.put('/cards/:cardId', (req, res, next) => {
-  const cardId = Number(req.params.cardId);
-  const cardIndex = cards.findIndex(card => card.id === cardId);
-  if (cardIndex === -1) {
-    return res.status(404).send('Card not found');
-  }
   const newCard = req.body;
   const validSuits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
   const validRanks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
@@ -84,11 +85,6 @@ app.put('/cards/:cardId', (req, res, next) => {
 
 // Delete a Card
 app.delete('/cards/:cardId', (req, res, next) => {
-  const cardId = Number(req.params.cardId);
-  const cardIndex = cards.findIndex(card => card.id === cardId);
-  if (cardIndex === -1) {
-    return res.status(404).send('Card not found');
-  }
   cards.splice(cardIndex, 1);
   res.status(204).send();
 });
