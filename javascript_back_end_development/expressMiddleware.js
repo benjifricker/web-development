@@ -32,18 +32,7 @@ if (!process.env.IS_TEST_ENV) {
 }
 
 // Parsing
-app.use((req, res, next) => {
-  let bodyData = '';
-  req.on('data', (data) => {
-    bodyData += data;
-  });
-  req.on('end', () => {
-    if (bodyData) {
-      req.body = JSON.parse(bodyData);
-    }
-    next();
-  });
-});
+app.use(bodyParser.json());
 
 // Get all Cards
 app.get('/cards/', (req, res, next) => {
