@@ -31,6 +31,7 @@ let nextSpiceId = 5;
 
 router.post('/', (req, res, next) => {
   const newSpice = req.body.spice;
+  newSpice.spiceRackId = Number(req.params.spiceRackId);
   if (newSpice.name && newSpice.grams) {
     newSpice.id = nextSpiceId++;
     spices.push(newSpice);
