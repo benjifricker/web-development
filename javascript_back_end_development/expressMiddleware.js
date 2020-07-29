@@ -40,7 +40,7 @@ app.use((req, res, next) => {
     if (bodyData) {
       req.body = JSON.parse(bodyData);
     }
-    
+    next();
   });
 });
 
