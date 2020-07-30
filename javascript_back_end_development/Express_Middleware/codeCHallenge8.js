@@ -29,10 +29,10 @@ app.get('/:userId/numbers', (req, res, next) => {
   res.send(publicData.numbers);
 });
 
-app.get('/:userId/phone-numbers', (req, res, next) => {
+app.get('/:userId/phone-numbers', isAdmin, (req, res, next) => {
   res.send(secretData.coolPhoneNumbers);
 });
 
-app.get('/:userId/fav-sites', (req, res, next) => {
+app.get('/:userId/fav-sites', isAdmin, (req, res, next) => {
   res.send(secretData.favSites);
 });
