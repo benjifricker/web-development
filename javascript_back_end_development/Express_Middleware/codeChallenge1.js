@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
 
-app.get('/whatis/apple', (req, res, next) => {
+const sendFruitResponse = (req, res, next) => {
   res.send('fruit');
-});
-app.get('/whatis/orange', (req, res, next) => {
-  res.send('fruit');
-});
-app.get('/whatis/banana', (req, res, next) => {
-  res.send('fruit');
-});
+};
+
+app.get('/whatis/apple', sendFruitResponse);
+app.get('/whatis/orange', sendFruitResponse);
+app.get('/whatis/banana', sendFruitResponse);
