@@ -12,11 +12,7 @@ const indexExists = (req, res, next) => {
   }
 };
 
-// Add your code below:
-
-
-
-// Add your code above
+app.use('/data/:index', indexExists);
 
 app.get('/data/:index', (req, res, next) => {
   res.send(data[req.params.index]);
