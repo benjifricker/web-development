@@ -6,7 +6,8 @@ const moods = ['happy', 'exuberant', 'fanatical about middleware'];
 const moodleware = (req, res, next) => {
   const randomMoodIndex = Math.floor(Math.random() * moods.length);
   req.mood = moods[randomMoodIndex];
-}
+  next()
+};
 
 app.use(moodleware);
 
