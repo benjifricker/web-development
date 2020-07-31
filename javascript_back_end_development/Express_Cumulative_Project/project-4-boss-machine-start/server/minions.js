@@ -36,4 +36,9 @@ minionsRouter.post('/', (req, res, next) => {
   res.status(201).send(newMinion);
 })
 
+// GET minion by id
+minionsRouter.get('/:minionId', (req, res, next) => {
+  res.send(req.minion);
+})
+
 module.exports = minionsRouter;
