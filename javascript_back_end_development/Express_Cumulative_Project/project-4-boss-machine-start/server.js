@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 // Mount apiRouter
 const apiRouter = require('./server/api');
+app.use('/api', apiRouter);
 
 // Testing
 if (!module.parent) { 
