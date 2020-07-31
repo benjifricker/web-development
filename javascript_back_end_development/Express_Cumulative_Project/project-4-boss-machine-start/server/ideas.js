@@ -9,6 +9,17 @@ const {
   deleteFromDatabasebyId
 } = require('./db');
 
+// ideaId param handler
+ideasRouter.param('ideaId', (req, res, next, id) => {
+  const idea = getFromDatabaseById('ideas', id);
+  if (idea) {
+    req.idea = idea;
+    next();
+  } else {
+    res.status(404).send();
+  }
+})
+
 // GET all ideas
 ideasRouter.get('/', (req, res, next) => {
   const response = getAllFromDatabase('ideas')
