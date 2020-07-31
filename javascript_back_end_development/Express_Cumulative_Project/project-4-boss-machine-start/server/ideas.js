@@ -9,6 +9,9 @@ const {
   deleteFromDatabasebyId
 } = require('./db');
 
+// Middleware to check new idea
+const checkMillionDollarIdea = require('./checkMillionDollarIdea');
+
 // ideaId param handler
 ideasRouter.param('ideaId', (req, res, next, id) => {
   const idea = getFromDatabaseById('ideas', id);
@@ -27,7 +30,7 @@ ideasRouter.get('/', (req, res, next) => {
 })
 
 // POST new idea
-ideasRouter.post('/', (req, res, next) => {
+ideasRouter.post('/', checkMillionDollarIdea, (req, res, next) => {
   const newIdea = addToDatabase('ideas', req.body);
   res.status(201).send(newIdea);
 })
@@ -38,7 +41,7 @@ ideasRouter.get('/:ideaId', (req, res, next) => {
 })
 
 // PUT single idea by id
-ideasRouter.put('/:ideaId', (req, res, next) => {
+ideasRouter.put('/:ideaId', checkMillionDollarIdea, (req, res, next) => {
   const newIdea = updateInstanceInDatabase('ideas', req.body);
   res.send(newIdea);
 })
