@@ -16,4 +16,10 @@ meetingsRouter.get('/', (req, res, next) => {
   res.send(getAllFromDatabase('meetings'));
 })
 
+// POST new meeting
+meetingsRouter.post('/', (req, res, next) => {
+  const newMeeting = addToDatabase('meetings', createMeeting());
+  res.status(201).send(newMeeting);
+})
+
 module.exports = meetingsRouter;
