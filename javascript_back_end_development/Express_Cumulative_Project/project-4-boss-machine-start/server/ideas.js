@@ -37,4 +37,10 @@ ideasRouter.get('/:ideaId', (req, res, next) => {
   res.send(req.idea);
 })
 
+// PUT single idea by id
+ideasRouter.put('/:ideaId', (req, res, next) => {
+  const newIdea = updateInstanceInDatabase('ideas', req.body);
+  res.send(newIdea);
+})
+
 module.exports = ideasRouter;
