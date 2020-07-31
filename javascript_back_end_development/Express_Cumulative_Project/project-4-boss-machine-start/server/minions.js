@@ -12,4 +12,11 @@ const {
   deleteAllFromDatabase
 } = require('./db');
 
+// GET all minions
+minionsRouter.get('/', (req, res, next) => {
+  const response = getAllFromDatabase('minions');
+  res.header("Content-Type",'application/json');
+  res.send(JSON.stringify(response, null, 2));
+})
+
 module.exports = minionsRouter;
