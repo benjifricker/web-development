@@ -11,4 +11,9 @@ const {
   deleteAllFromDatabase
 } = require('./db');
 
+// GET all meetings
+meetingsRouter.get('/', (req, res, next) => {
+  res.send(getAllFromDatabase('meetings'));
+})
+
 module.exports = meetingsRouter;
