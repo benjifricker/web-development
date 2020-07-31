@@ -12,6 +12,17 @@ const {
   deleteAllFromDatabase
 } = require('./db');
 
+// minionsRouter.param
+minionsRouter.param('minionId', (req, res, next, id) => {
+  const minion = getFromDatabaseById('minions', id);
+  if (minion) {
+    req.minion = minion;
+    next();
+  } else {
+    res.status(404).send();
+  }
+})
+
 // GET all minions
 minionsRouter.get('/', (req, res, next) => {
   const response = getAllFromDatabase('minions');
