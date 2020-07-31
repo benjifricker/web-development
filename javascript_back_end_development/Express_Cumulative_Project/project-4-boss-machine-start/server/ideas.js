@@ -9,4 +9,9 @@ const {
   deleteFromDatabasebyId
 } = require('./db');
 
+ideasRouter.get('/', (req, res, next) => {
+  const response = getAllFromDatabase('ideas')
+  res.send(response);
+})
+
 module.exports = ideasRouter;
