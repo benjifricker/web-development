@@ -6,16 +6,16 @@ const cors = require('cors');
 
 const PORT = process.env.PORT || 4001;
 
-// Add middleware for handling CORS requests from index.html
+// Middleware for handling CORS requests from index.html
 app.use(cors());
 
-// Add middware for parsing request bodies here:
+// Middleware for parsing request bodies
 app.use(bodyParser.json());
 
-// Mount your existing apiRouter below at the '/api' path.
+// Mount apiRouter
 const apiRouter = require('./server/api');
 
-// This conditional is here for testing purposes:
+// Testing
 if (!module.parent) { 
   // Add your code to start the server listening at PORT below:
 
