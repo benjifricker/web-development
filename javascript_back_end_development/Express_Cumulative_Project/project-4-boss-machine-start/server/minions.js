@@ -19,4 +19,10 @@ minionsRouter.get('/', (req, res, next) => {
   res.send(JSON.stringify(response, null, 2));
 })
 
+// POST new minion
+minionsRouter.post('/', (req, res, next) => {
+  const newMinion = addToDatabase('minions', req.body);
+  res.status(201).send(newMinion);
+})
+
 module.exports = minionsRouter;
