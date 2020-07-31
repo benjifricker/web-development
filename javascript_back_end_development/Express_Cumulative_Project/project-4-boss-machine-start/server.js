@@ -17,8 +17,7 @@ const apiRouter = require('./server/api');
 
 // Testing
 if (!module.parent) { 
-  // Add your code to start the server listening at PORT below:
-
+  app.listen(PORT);
 }
 
 module.exports = app;
