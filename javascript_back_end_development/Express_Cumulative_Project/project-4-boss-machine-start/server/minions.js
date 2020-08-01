@@ -72,4 +72,16 @@ minionsRouter.post('/:minionId/work', (req, res, next) => {
   res.status(201).send(createdWork);
 })
 
+// Param handler for /:workId
+minionsRouter.param('workId', (req, res, next, id) => {
+  const work = getFromDatabaseById('work', id);
+  if (work) {
+    req.work = work;
+    next();
+  } else {
+    res.status(404).send();
+  }
+  console.log(work);
+})
+
 module.exports = minionsRouter;
