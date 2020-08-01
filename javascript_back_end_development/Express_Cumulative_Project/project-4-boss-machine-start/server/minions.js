@@ -84,4 +84,14 @@ minionsRouter.param('workId', (req, res, next, id) => {
   console.log(work);
 })
 
+// Update single work with minionId and workId
+minionsRouter.put('/:minionId/work/:workId', (req, res, next) => {
+  if (req.params.minionId != req.body.minionId) {
+    res.status(400).send();
+  } else {
+    const updatedWork = updateInstanceInDatabase('work', req.body);
+    res.send(updatedWork);
+  }
+})
+
 module.exports = minionsRouter;
