@@ -64,4 +64,12 @@ minionsRouter.get('/:minionId/work', (req, res, next) => {
   res.send(work);
 })
 
+// POST new work for minion with id
+minionsRouter.post('/:minionId/work', (req, res, next) => {
+  const newWork = req.body;
+  newWork.minionId = req.params.minionId;
+  const createdWork = addToDatabase('work', newWork);
+  res.status(201).send(createdWork);
+})
+
 module.exports = minionsRouter;
