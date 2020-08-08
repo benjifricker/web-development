@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 
+const bodyParser = require('body-parser');
+
 const { quotes } = require('./data');
 const { getRandomElement } = require('./utils');
 
 const PORT = process.env.PORT || 4001;
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 app.get('/api/quotes/', (req, res) => {
   if (req.query.person) {
