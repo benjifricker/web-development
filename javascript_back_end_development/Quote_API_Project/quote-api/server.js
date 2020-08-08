@@ -32,6 +32,15 @@ app.get('/api/quotes/random', (req, res) => {
   });
 });
 
+app.post('/api/quotes', (req, res) => {
+  if (!req.body.quote || !req.body.person) {
+    res.status(400).send();
+  } else {
+    quotes.push(req.body);
+    res.send(req.body.quote);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
