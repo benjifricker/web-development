@@ -133,14 +133,22 @@ const bestEvent = country => {
 };
 
 /*
+Helper function for numberMenMedalists and numberWomenMedalists
+*/
+const numberGenderMedalists = (country, gender) => {
+  return  `SELECT COUNT(DISTINCT name) AS count
+          FROM GoldMedal
+          WHERE country = '${country}' AND gender = '${gender}';
+          `;
+};
+
+/*
 Returns a SQL query string that will find the number of male medalists.
 */
 
 const numberMenMedalists = country => {
-  return  `SELECT COUNT(DISTINCT name) AS count
-          FROM GoldMedal
-          WHERE country = '${country}' AND gender = 'Men';
-          `;
+  const gender = 'Men';
+  return numberGenderMedalists(country, gender);
 };
 
 /*
@@ -148,10 +156,8 @@ Returns a SQL query string that will find the number of female medalists.
 */
 
 const numberWomenMedalists = country => {
-  return  `SELECT COUNT(DISTINCT name) AS count
-          FROM GoldMedal
-          WHERE country = '${country}' AND gender = 'Women';
-          `;
+  const gender = 'Women';
+  return numberGenderMedalists(country, gender);
 };
 
 /*
