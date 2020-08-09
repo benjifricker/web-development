@@ -19,7 +19,18 @@ Returns a SQL query string that will create the GoldMedal table with ten columns
 */
 
 const createGoldMedalTable = () => {
-  return;
+  return  `CREATE TABLE GoldMedal (
+          id INTEGER PRIMARY KEY, 
+          year INTEGER NOT NULL,
+          city TEXT NOT NULL,
+          season TEXT NOT NULL,
+          name TEXT NOT NULL,
+          country TEXT NOT NULL,
+          gender TEXT NOT NULL,
+          sport TEXT NOT NULL,
+          discipline TEXT NOT NULL,
+          event TEXT NOT NULL);
+          `;
 };
 
 /*
