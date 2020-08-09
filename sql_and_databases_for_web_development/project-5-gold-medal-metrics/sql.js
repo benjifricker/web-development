@@ -180,7 +180,15 @@ optionally ordered by the given field in the specified direction.
 */
 
 const orderedMedals = (country, field, sortAscending) => {
-  return;
+  let orderingString = '';
+  if (field) {
+    orderingString = `ORDER BY ${field} ${sortAscending ? 'ASC' : 'DESC'}`;
+  };
+  return  `SELECT *
+          FROM GoldMedal
+          WHERE country = '${country}'
+          ${orderingString};
+          `;
 };
 
 /*
