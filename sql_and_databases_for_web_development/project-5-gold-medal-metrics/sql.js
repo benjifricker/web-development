@@ -45,18 +45,27 @@ const goldMedalNumber = country => {
 };
 
 /*
+Helper function for mostSummerWins() and mostWinterWins()
+*/
+
+const mostSeasonWins = (country, season) => {
+  return  `SELECT year, COUNT(*) AS count
+          FROM GoldMedal
+          WHERE country = '${country}' AND season = '${season}'
+          GROUP BY year
+          ORDER BY count DESC
+          LIMIT 1;
+          `;
+};
+
+/*
 Returns a SQL query string that will find the year where the given country 
 won the most summer medals, along with the number of medals aliased to 'count'.
 */
 
 const mostSummerWins = country => {
-  return  `SELECT year, COUNT(*) AS count
-          FROM GoldMedal
-          WHERE country = '${country}' AND season = 'Summer'
-          GROUP BY year
-          ORDER BY COUNT(*) DESC
-          LIMIT 1;
-          `;
+  const season = 'Summer';
+  return  mostSeasonWins(country, season);
 };
 
 /*
@@ -65,13 +74,8 @@ won the most winter medals, along with the number of medals aliased to 'count'.
 */
 
 const mostWinterWins = country => {
-  return  `SELECT year, COUNT(*) AS count
-          FROM GoldMedal
-          WHERE country = '${country}' AND season = 'Winter'
-          GROUP BY year
-          ORDER BY COUNT(*) DESC
-          LIMIT 1;
-          `;
+  const season = 'Winter';
+  return  mostSeasonWins(country, season);
 };
 
 /*
