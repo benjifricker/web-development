@@ -79,18 +79,27 @@ const mostWinterWins = country => {
 };
 
 /*
+Helper function for bestYear, bestDiscipline, bestSport, and bestEvent
+*/
+
+const bestCategory = (country, category) => {
+  return  `SELECT ${category}, COUNT(*) AS count
+          FROM GoldMedal
+          WHERE country = '${country}'
+          GROUP BY ${category}
+          ORDER BY count DESC
+          LIMIT 1;
+          `;
+};
+
+/*
 Returns a SQL query string that will find the year where the given country 
 won the most medals, along with the number of medals aliased to 'count'.
 */
 
 const bestYear = country => {
-  return  `SELECT year, COUNT(*) AS count
-          FROM GoldMedal
-          WHERE country = '${country}'
-          GROUP BY year
-          ORDER BY count DESC
-          LIMIT 1;
-          `;
+  const category = 'year';
+  return bestCategory(country, category);
 };
 
 /*
@@ -99,13 +108,8 @@ won the most medals, along with the number of medals aliased to 'count'.
 */
 
 const bestDiscipline = country => {
-  return  `SELECT discipline, COUNT(*) AS count
-          FROM GoldMedal
-          WHERE country = '${country}'
-          GROUP BY discipline
-          ORDER BY count DESC
-          LIMIT 1;
-          `;
+  const category = 'discipline';
+  return bestCategory(country, category);
 };
 
 /*
@@ -114,13 +118,8 @@ won the most medals, along with the number of medals aliased to 'count'.
 */
 
 const bestSport = country => {
-  return  `SELECT sport, COUNT(*) AS count
-          FROM GoldMedal
-          WHERE country = '${country}'
-          GROUP BY sport
-          ORDER BY count DESC
-          LIMIT 1;
-          `;
+  const category = 'sport';
+  return bestCategory(country, category);
 };
 
 /*
@@ -129,13 +128,8 @@ won the most medals, along with the number of medals aliased to 'count'.
 */
 
 const bestEvent = country => {
-  return  `SELECT event, COUNT(*) AS count
-          FROM GoldMedal
-          WHERE country = '${country}'
-          GROUP BY event
-          ORDER BY count DESC
-          LIMIT 1;
-          `;
+  const category = 'event';
+  return bestCategory(country, category);
 };
 
 /*
